@@ -10,7 +10,7 @@ function App() {
   React.useEffect(()=>{    //set use effect hook for handling api calls
     async function addPreview(){
       try {
-        const response = await fetch('https://podcast-api.netlify.app')          //fetch  data and set it to setposts
+        const response = await fetch('https://podcast-api.netlify.app')          //fetch  data and set it to set preview
         const data = await response.json()
         setPreview(data)
 
@@ -35,7 +35,7 @@ function App() {
   return (
     <>
     <h1 className='text-red-600'>hello</h1>
-    
+
     </>
   )
 }
