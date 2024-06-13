@@ -1,6 +1,4 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route} from "react-router-dom"
-import './App.css'
 
 function ShowPreviews() {
   const [previews, setPreviews] = React.useState([]) // initialise state for  podcast preview
