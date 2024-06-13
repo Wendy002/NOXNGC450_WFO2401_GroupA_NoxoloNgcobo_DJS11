@@ -117,4 +117,5 @@ Since genre information is only exposed on `PREVIEW` by means of the specific `G
 
 Please refer to the DJS rubric found in your dashboard spreadsheet for user stories
 
-
+### Resources
+- https://www.svgrepo.com/svg/349480/pocketcasts for svgs
