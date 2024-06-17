@@ -4,30 +4,20 @@ import SideBar from '../Layout-components/SideBar.jsx'
 import Favourites from './Favourites/Favourites.jsx'
 import ShowPreviews from './Discover/ShowPreviews.jsx'
 import ShowDetails from './Discover/ShowDetails.jsx'
-import showsCarousel from './Discover/ShowsCarousel.jsx'
-import AudioPlayer from '../Layout components/AudioPlayer.jsx'
+import ShowsCarousel from './Discover/ShowsCarousel.jsx'
+import AudioPlayer from '../Layout-components/AudioPlayer.jsx'
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <div>
+    <div>
+      <div  className="flex">
         <SideBar/>
-        <div>
-            <div>
-              <Routes>
-                <Route path='/' element={<showsCarousel/>}/>
-                <Route path='Discover' element={<ShowPreviews/>}/>
-                <Route path='Favourite' element={<Favourites/>}/>
-              </Routes>
-            </div>
-        </div>
-        <div>
-          <AudioPlayer/>
-        </div>
+        
       </div>
+    </div>
+     
       
-      
-    </BrowserRouter>
+    
   )
 }
 
