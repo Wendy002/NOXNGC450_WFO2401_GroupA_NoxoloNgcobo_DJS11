@@ -9,13 +9,14 @@ import AudioPlayer from '../Layout-components/AudioPlayer.jsx'
 
 const App = () => {
   return (
-    <div>
-      <div  className="flex">
-        <SideBar/>
-        
-      </div>
+    <div className='relative flex'>
+      <SideBar/>
+
     </div>
-     
+  
+        
+  
+      
       
     
   )

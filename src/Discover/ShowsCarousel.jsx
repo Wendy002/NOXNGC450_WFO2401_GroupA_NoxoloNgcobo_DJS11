@@ -6,4 +6,4 @@ const ShowsCarousel = () => {
   )
 }
 
-export default showsCarousel
+export default ShowsCarousel
