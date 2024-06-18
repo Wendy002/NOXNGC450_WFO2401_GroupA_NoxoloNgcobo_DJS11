@@ -11,7 +11,7 @@ const SideBar = () => {
             <img src='../assets/icon.svg'/>
             <p className='font-bold text-2xl'>GenZ<span className='text-white'>cast</span></p>
         </div>
-        <div><IoClose/></div>
+        <div className='hidden md:block'><IoClose/></div>
         <div>
             <HiHome/>
             <p>Discover</p>             
