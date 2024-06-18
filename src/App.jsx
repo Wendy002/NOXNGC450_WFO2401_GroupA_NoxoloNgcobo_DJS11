@@ -8,10 +8,14 @@ import ShowsCarousel from './Discover/ShowsCarousel.jsx'
 import AudioPlayer from './Layout-components/AudioPlayer.jsx'
 
 const App = () => {
+
+  const [menuOpen, setMenuOpen] =React.useState(true);
   return (
     <BrowserRouter>
       <div className='min-h-screen w-full bg-gray-900 overflow-x-hidden overflow-y-hidden'>
-        <SideBar/>
+        <SideBar setMenuOpen={setMenuOpen}/>
+        <div></div>
+
       </div>
     </BrowserRouter>
   
