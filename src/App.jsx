@@ -9,11 +9,12 @@ import AudioPlayer from './Layout-components/AudioPlayer.jsx'
 
 const App = () => {
 
-  const [menuOpen, setMenuOpen] =React.useState(true);
+  //const [menuOpen, setMenuOpen] =React.useState(true); 
+  // addd this inside sideBar later setMenuOpen={setMenuOpen}
   return (
     <BrowserRouter>
       <div className='min-h-screen w-full bg-gray-900 overflow-x-hidden overflow-y-hidden'>
-        <SideBar setMenuOpen={setMenuOpen}/>
+        <SideBar />   
         <div></div>
 
       </div>
