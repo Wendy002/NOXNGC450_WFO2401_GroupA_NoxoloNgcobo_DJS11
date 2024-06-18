@@ -9,15 +9,9 @@ import AudioPlayer from './Layout-components/AudioPlayer.jsx'
 
 const App = () => {
   return (
-    <div className='h-screen bg-black'>
-    
-
+    <div className='min-h-screen w-full bg-gray-900 overflow-x-hidden overflow-y-hidden'>
+    <SideBar/>
     </div>
-  
-        
-  
-      
-      
     
   )
 }
