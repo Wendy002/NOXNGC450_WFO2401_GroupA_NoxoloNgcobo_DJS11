@@ -13,9 +13,11 @@ const App = () => {
   // addd this inside sideBar later setMenuOpen={setMenuOpen}
   return (
     <BrowserRouter>
-      <div className='min-h-screen w-full bg-gray-900 overflow-x-hidden overflow-y-hidden'>
+      <div className=' flex flex-row min-h-screen w-full bg-gray-900 overflow-x-hidden overflow-y-hidden'>
         <SideBar />   
-        <div></div>
+        <div className='flex flex-col flex-[3]'> 
+
+        </div>
 
       </div>
     </BrowserRouter>
