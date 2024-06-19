@@ -4,10 +4,12 @@ import ShowsCarousel from './ShowsCarousel'
 function ShowPreviews() {
   const [previews, setPreviews] = React.useState([]) // initialise state for  podcast preview
   const [error, setError] = React.useState(null) //  initialise state for  error messages
+  const [loading, setLoading] = React.useState(false)
   
   
   React.useEffect(()=>{    //set use effect hook for handling api calls
     async function addPreviews(){
+      setLoading(true)
       try {
         const response = await fetch('https://podcast-api.netlify.app')          //fetch  data and set it to set preview
         const data = await response.json()
@@ -20,6 +22,8 @@ function ShowPreviews() {
       } catch (err) {
         setError(err)        //set error to err
         
+      } finally {
+        setLoading(false)
       }
     }
     addPreviews()  // call function
@@ -28,7 +32,9 @@ function ShowPreviews() {
   if (error) {                 // if error display this message
     return <h1 className='text-red-600 font-extrabold'>{error.message}</h1>
   }
-  
+  if (loading){
+    return <h1 className='text-white font-extrabold text-3xl justify-center items-center'>Loading ....</h1>
+  }
 
 
   return (
