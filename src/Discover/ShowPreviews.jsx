@@ -1,4 +1,5 @@
 import React from 'react'
+import ShowsCarousel from './ShowsCarousel'
 
 function ShowPreviews() {
   const [previews, setPreviews] = React.useState([]) // initialise state for  podcast preview
@@ -31,12 +32,13 @@ function ShowPreviews() {
 
 
   return (
-    <>
+    <> 
 
 
        <ul className='list-none flex flex-wrap text-white'>
         {previews.map(preview => (
           <li key={preview.id}>
+            <img src={preview.image}/>
             <h3>{preview.title}</h3>
             <p>{preview.description}</p>
             <p><span className='font-bold'>Seasons</span>{preview.seasons}</p>
