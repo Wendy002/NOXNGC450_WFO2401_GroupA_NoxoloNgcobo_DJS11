@@ -1,4 +1,8 @@
 import React from 'react'
+import { FaPlay } from "react-icons/fa";
+import { FaPauseCircle } from "react-icons/fa";
+import { FaStepForward } from "react-icons/fa";
+import { FaBackwardStep } from "react-icons/fa6";
 import ShowsCarousel from './ShowsCarousel'
 
 function ShowPreviews() {
@@ -43,11 +47,16 @@ function ShowPreviews() {
 
        <ul className='list-none flex flex-wrap text-white'>
         {previews.map(preview => (
-          <li key={preview.id}>
-            <img src={preview.image}/>
-            <h3>{preview.title}</h3>
-            <p>{preview.description}</p>
-            <p><span className='font-bold'>Seasons</span>{preview.seasons}</p>
+          <li key={preview.id} className='flex flex-col gap-2'>
+            <img 
+            src={preview.image} 
+            width={174}
+            height={174}
+            alt={preview.title}
+            className='aspect-square h-fit w-full rounded-xl 2xl:size-[200px]'/>
+            <p className=' text-12 truncate font-normal capitalize text-white-4'>{preview.description}</p>
+            <p><span className='font-bold'>Seasons: </span>{preview.seasons}</p>
+            <p><span className='font-bold'>Genres: </span>{preview.genres}</p>
             
 
           </li>
