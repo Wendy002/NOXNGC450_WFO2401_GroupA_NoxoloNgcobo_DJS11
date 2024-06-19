@@ -50,7 +50,10 @@ function ShowPreviews() {
 
        <ul className='list-none flex flex-wrap text-white'>
         {previews.map(preview => (
-          <li key={preview.id} className='flex flex-col gap-2'>
+          <li key={preview.id} className='relative no-underline bg-black max-w-[220px] h-[280px]
+          flex flex-col justify-start items-center p-4 rounded-md shadow-[0 0 16px 0 rgba(0, 0, 0, 0.1)]
+          hover:cursor-pointer hover:translate-y-[-8px] hover:transition-all hover:shadow-[0 0 18px 0 rgba(0, 0, 0, 0.3)] 
+          brightness-125'>
             <div>
               <HiHeart/>
               <img 
