@@ -25,7 +25,8 @@ const SideBar = ({menuOpen, onToggle}) => {
                     <p className='font-bold text-2xl'>GenZ<span className='text-white'>cast</span></p>
                 </div>
             </Link>   
-            <button onClick={onToggle}className=' font-bold text-2xl  md:block ml-4'><RxHamburgerMenu/></button>
+            <button onClick={onToggle}className={`absolute cursor-pointer -right-3 top-9 w-7 
+           border-2 ${!menuOpen}`}><RxHamburgerMenu/></button>
         </div>
         
       
