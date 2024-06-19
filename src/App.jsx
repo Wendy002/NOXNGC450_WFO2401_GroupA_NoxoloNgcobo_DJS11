@@ -18,7 +18,7 @@ const App = () => {
     <BrowserRouter>
       <div className=' flex flex-row min-h-screen w-full bg-gray-900'>
         <SideBar menuOpen = {menuOpen}  onToggle={onToggle}/>   
-        <div className='h-screen flex-1 p-7 overflow-auto'> 
+        <div className='h-screen flex-1 p-7 overflow-scroll '> 
         <Routes>
           <Route path='/' exact element={<ShowPreviews/>}/>
           <Route path='/Favourites'  exact element={<Favourites/>}/>
@@ -27,7 +27,10 @@ const App = () => {
         </Routes>
 
         </div>
-
+        
+      </div>
+      <div className='sticky bottom-0 z-100'>
+       < AudioPlayer/>
       </div>
     </BrowserRouter>
   

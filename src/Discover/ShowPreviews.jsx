@@ -1,8 +1,4 @@
 import React from 'react'
-import { FaPlay } from "react-icons/fa";
-import { FaPauseCircle } from "react-icons/fa";
-import { FaStepForward } from "react-icons/fa";
-import { FaBackwardStep } from "react-icons/fa6";
 import { SiApplemusic } from "react-icons/si";
 import ShowsCarousel from './ShowsCarousel';
 import { HiHeart} from 'react-icons/hi'
