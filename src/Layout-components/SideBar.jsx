@@ -15,9 +15,8 @@ const SideBar = ({menuOpen, onToggle}) => {
 
   return (
     <div  className={` ${
-        menuOpen ? 'block' : 'hidden'
-      } font-sans flex-[0.5] flex flex-col text-white  bg-slate-800 h-screen 
-    items-start  md:fixed md:z-1000 md:w-full md:max-w-[250px]  left-0 transition duration-300 ease-in-out box-border`}>
+        menuOpen ? 'w-72' : 'w-20'
+      }  text-white  bg-slate-800 h-screen p-5  pt-8 relative duration-300 `}>
 
         <div className='justify-between flex items-center px-16 w-[86%]'>
             <Link to="/">
