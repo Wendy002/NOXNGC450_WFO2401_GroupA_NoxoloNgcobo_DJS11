@@ -1,6 +1,7 @@
 import React from 'react'
 import { HiHome, HiHeart} from 'react-icons/hi'
 import { IoClose } from "react-icons/io5";
+import { FaRegHeart } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link, NavLink } from 'react-router-dom';
 
