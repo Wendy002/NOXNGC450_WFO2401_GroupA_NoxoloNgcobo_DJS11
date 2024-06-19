@@ -18,16 +18,20 @@ const SideBar = ({menuOpen, onToggle}) => {
         menuOpen ? 'w-72' : 'w-20'
       }  text-white  bg-slate-800 h-screen p-5  pt-8 relative duration-300 `}>
 
-        <div className='justify-between flex items-center px-16 w-[86%]'>
-            <Link to="/">
-                <div className='text-[#ff564a] mr-6 flex items-center justify-center gap-1.5 font-[bold] text-xl mx-0 my-4'>
-                    <img src='../assets/icon.svg'/>
-                    <p className='font-bold text-2xl'>GenZ<span className='text-white'>cast</span></p>
-                </div>
-            </Link>   
-            <button onClick={onToggle}className={`absolute cursor-pointer -right-3 top-9 w-7 
-           border-2 ${!menuOpen}`}><RxHamburgerMenu/></button>
-        </div>
+        <button onClick={onToggle} className={`absolute cursor-pointer -right-3 top-9 w-7 
+                border-2 ${!menuOpen}`}><RxHamburgerMenu/></button>
+        <Link to="/">
+            <div className="flex gap-x-4 items-center">
+                <img className= {`cursor-pointer 'text-[#ff564a] duration-500 ${
+                    menuOpen
+                  }`} src='../assets/icon.svg'/>
+                <p className={`text-[#ff564a] font-bold text-2xl origin-left  duration-200 ${
+              !menuOpen && "scale-0"
+            }`}>GenZ<span className='text-white'>cast</span></p>
+            </div>
+        </Link>   
+       
+        
         
       
        
