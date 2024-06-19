@@ -5,17 +5,19 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { Link, NavLink } from 'react-router-dom';
 
 
-const SideBar = () => {
+const SideBar = ({menuOpen, onToggle}) => {
 
     const activeStyles = {
         fontWeight: "bold",
         textDecoration: "underline",
         color: "#ff564a"
     }
-    
+
   return (
-    <div  className='font-sans flex-[0.5] flex flex-col text-white  bg-slate-800 h-screen 
-    items-start  md:fixed md:z-1000 md:w-full md:max-w-[250px]  transition duration-300 ease-in-out box-border'>
+    <div  className={` ${
+        menuOpen ? 'w-72' : 'w-20'
+      } font-sans flex-[0.5] flex flex-col text-white  bg-slate-800 h-screen 
+    items-start  md:fixed md:z-1000 md:w-full md:max-w-[250px]  left-0 transition duration-300 ease-in-out box-border`}>
 
         <div className='justify-between flex items-center px-16 w-[86%]'>
             <Link to="/">
@@ -24,7 +26,7 @@ const SideBar = () => {
                     <p className='font-bold text-2xl'>GenZ<span className='text-white'>cast</span></p>
                 </div>
             </Link>   
-            <div className=' font-bold text-2xl hidden md:block ml-4'><IoClose/></div>
+            <button onClick={onToggle}className=' font-bold text-2xl  md:block ml-4'><RxHamburgerMenu/></button>
         </div>
         
       
