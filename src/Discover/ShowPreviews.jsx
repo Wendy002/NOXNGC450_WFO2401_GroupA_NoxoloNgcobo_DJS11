@@ -48,14 +48,14 @@ function ShowPreviews() {
     <> 
 
 
-       <ul className='list-none flex flex-wrap text-white'>
+       <ul className='list-none flex flex-wrap ml-8 text-white gap-10  justify-start'>
         {previews.map(preview => (
           <li key={preview.id} className='relative no-underline bg-black max-w-[220px] h-[280px]
           flex flex-col justify-start items-center p-4 rounded-md shadow-[0 0 16px 0 rgba(0, 0, 0, 0.1)]
           hover:cursor-pointer hover:translate-y-[-8px] hover:transition-all hover:shadow-[0 0 18px 0 rgba(0, 0, 0, 0.3)] 
           brightness-125'>
             <div>
-              <HiHeart/>
+              <HiHeart className=' font-bold text-4xl absolute flex  items-center bg-stone-400 top-2 right-1.5 p-1.5 rounded-[50%] z-[100]'/>
               <img 
               src={preview.image} 
               width={174}
@@ -64,13 +64,16 @@ function ShowPreviews() {
               className='aspect-square h-fit w-full rounded-xl 2xl:size-[200px]'/>
             </div>
             
-            <div className='flex flex-col'>
-              <h3>{preview.title}</h3>
-              <p className=' text-12 truncate font-normal capitalize text-white-4'>{preview.description}</p>
-              <div>
-                <p><span className='font-bold'>Seasons: </span>{preview.seasons}</p>
-                <p><span className='font-bold'>Genres: </span>{preview.genres}</p>
+            <div className='flex items-end font-normal pt-4 px-0 pb-0 w-full'>
+              <div className='flex w-full flex-col justify-start gap-1'>
+                <p className='truncate font-bold'>{preview.title}</p>
+                <p className=' truncate font-normal'>{preview.description}</p>
+                <div className='flex justify-between'>
+                  <p><span className='font-bold'>Seasons: </span>{preview.seasons}</p>
+                  <p><span className='font-bold'>Genres: </span>{preview.genres}</p>
+                </div>
               </div>
+              
               
             </div>
             
