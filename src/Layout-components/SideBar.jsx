@@ -43,7 +43,9 @@ const SideBar = ({menuOpen, onToggle}) => {
             >
                 <div className=' text-2xl font-bold ml-6 px-[4px] md:px-[16px] flex flex-row justify-start items-center gap-[12px] cursor-pointer w-full hover:text-[#ff564a]'>
                     <HiHome/>
-                    <p className='py-8 px-0'>Discover</p>             
+                    <p className= {`origin-left py-8 px-0 duration-200 ${
+              !menuOpen && "scale-0"
+            }`}>Discover</p>             
                 </div>
             </NavLink>
            
@@ -54,7 +56,9 @@ const SideBar = ({menuOpen, onToggle}) => {
             >
                 <div className='text-2xl font-bold ml-6 px-[4px] md:px-[16px] flex flex-row justify-start items-center gap-[12px] cursor-pointer w-full hover:text-[#ff564a]'>
                     <HiHeart/>
-                    <p className='py-8 px-0'>Favourites</p> 
+                    <p className={`origin-left py-8 px-0 duration-200 ${
+              !menuOpen && "scale-0"
+            }`}>Favourites</p> 
                 </div>
             </NavLink>
 
