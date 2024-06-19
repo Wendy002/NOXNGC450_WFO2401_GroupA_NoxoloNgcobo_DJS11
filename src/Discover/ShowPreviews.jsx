@@ -3,7 +3,10 @@ import { FaPlay } from "react-icons/fa";
 import { FaPauseCircle } from "react-icons/fa";
 import { FaStepForward } from "react-icons/fa";
 import { FaBackwardStep } from "react-icons/fa6";
-import ShowsCarousel from './ShowsCarousel'
+import { SiApplemusic } from "react-icons/si";
+import ShowsCarousel from './ShowsCarousel';
+import { FaRegHeart } from "react-icons/fa";
+import { HiHeart} from 'react-icons/hi'
 
 function ShowPreviews() {
   const [previews, setPreviews] = React.useState([]) // initialise state for  podcast preview
@@ -48,15 +51,26 @@ function ShowPreviews() {
        <ul className='list-none flex flex-wrap text-white'>
         {previews.map(preview => (
           <li key={preview.id} className='flex flex-col gap-2'>
-            <img 
-            src={preview.image} 
-            width={174}
-            height={174}
-            alt={preview.title}
-            className='aspect-square h-fit w-full rounded-xl 2xl:size-[200px]'/>
-            <p className=' text-12 truncate font-normal capitalize text-white-4'>{preview.description}</p>
-            <p><span className='font-bold'>Seasons: </span>{preview.seasons}</p>
-            <p><span className='font-bold'>Genres: </span>{preview.genres}</p>
+            <div>
+              <HiHeart/>
+              <img 
+              src={preview.image} 
+              width={174}
+              height={174}
+              alt={preview.title}
+              className='aspect-square h-fit w-full rounded-xl 2xl:size-[200px]'/>
+            </div>
+            
+            <div className='flex flex-col'>
+              <h3>{preview.title}</h3>
+              <p className=' text-12 truncate font-normal capitalize text-white-4'>{preview.description}</p>
+              <div>
+                <p><span className='font-bold'>Seasons: </span>{preview.seasons}</p>
+                <p><span className='font-bold'>Genres: </span>{preview.genres}</p>
+              </div>
+              
+            </div>
+            
             
 
           </li>
