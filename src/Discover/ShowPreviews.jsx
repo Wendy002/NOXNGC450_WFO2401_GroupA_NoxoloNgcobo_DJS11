@@ -56,7 +56,7 @@ function ShowPreviews() {
               width={174}
               height={174}
               alt={preview.title}
-              className='aspect-square h-fit w-full rounded-xl 2xl:size-[200px]'/>
+              className='aspect-square h-fit w-full px-0 rounded-xl 2xl:size-[200px]'/>
             </div>
             
             <div className='flex items-end font-normal pt-4 px-0 pb-0 w-full'>
@@ -65,7 +65,7 @@ function ShowPreviews() {
                 <p className=' text-gray-500 font-normal line-clamp-2 text-ellipsis'>{preview.description}</p>
                 <div className='flex justify-between'>
                   <p><span className='font-bold'>Seasons: </span>{preview.seasons}</p>
-                  <p><span className='font-bold'>Genres: </span>{preview.genres}</p>
+                  <p><span className='font-bold'>Genres: </span>{preview.genres.length}</p>
                 </div>
                 <p className=' text-gray-500 font-normal'><span></span>{preview.updated.slice(0,10)}</p>
               </div>

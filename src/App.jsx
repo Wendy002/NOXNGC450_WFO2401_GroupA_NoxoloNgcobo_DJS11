@@ -18,7 +18,7 @@ const App = () => {
     <BrowserRouter>
       <div className=' flex flex-row min-h-screen w-full bg-gray-900'>
         <SideBar menuOpen = {menuOpen}  onToggle={onToggle}/>   
-        <div className='h-screen flex-1 p-7 overflow-scroll '> 
+        <div className='h-screen flex-1 p-7 overflow-x-hidden'> 
         <Routes>
           <Route path='/' exact element={<ShowPreviews/>}/>
           <Route path='/Favourites'  exact element={<Favourites/>}/>
