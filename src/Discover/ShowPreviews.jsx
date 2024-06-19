@@ -32,7 +32,9 @@ function ShowPreviews() {
 
   return (
     <>
-       <ul className='list-none'>
+
+
+       <ul className='list-none flex flex-wrap text-white'>
         {previews.map(preview => (
           <li key={preview.id}>
             <h3>{preview.title}</h3>
