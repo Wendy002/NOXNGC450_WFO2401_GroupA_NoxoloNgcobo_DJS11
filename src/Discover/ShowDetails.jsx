@@ -57,6 +57,9 @@ const type = location.state?.type || "all"
   // check if there is a show is valid then displays or else show....loading..
   // @returns image , title, desciption, eps and seasons
 //-------------------filter for seasons-----------------------------------------------
+const filteredEpisodes = show.seasons
+  ? show.seasons.filter((season) => season.season === selectedSeason)
+  : [];
  
   
   
