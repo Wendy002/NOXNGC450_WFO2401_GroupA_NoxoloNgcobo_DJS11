@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link, useParams, useLocation } from 'react-router-dom'
+import {Link, useParams, useLocation} from 'react-router-dom'
 import { HiHeart } from 'react-icons/hi'
 
 const ShowDetails = () => {
@@ -77,14 +77,38 @@ const filteredEpisodes = show.seasons
             <HiHeart className=' font-bold text-4xl absolute flex  items-center bg-stone-400 top-2 right-1.5 p-1.5 rounded-[50%] z-[100]'/>
           </div>
           <div className='grid grid-cols-2 sm:grid-cols-3 mt-10 pl-2 text-white' >
-            <p className='mr-4'>Title</p>
-            <p>Date Added</p>
+            
           </div>
           <hr/>
+          <div>
+            {show.seasons && (
+              <select
+                value={selectedSeason}
+                onChange={handleSeasonChange }
+              >
+                {show.seasons.map((season) => (
+                  <option key={season.season} value={season.season}>
+                    {season.title}
+                  </option>
+                ))}
+              </select>
+            )}
+            <ul>
+              {filteredEpisodes.map((episode) => (
+                <li key={episode.episode}>
+                  <h3>{episode.title}</h3>
+                  <p>{episode.description}</p>
+                  <audio controls>
+                    <source src={episode.file} type="audio/mpeg" />
+                    Your browser does not support the audio element.
+                  </audio>
+                </li>
+              ))}
+           </ul>
+          </div>
         </div>   
         
       )}
-      
     
     </>
   )
