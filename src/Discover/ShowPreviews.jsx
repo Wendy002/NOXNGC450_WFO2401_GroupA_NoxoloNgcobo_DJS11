@@ -2,6 +2,7 @@ import React from 'react'
 import { SiApplemusic } from "react-icons/si";
 import ShowsCarousel from './ShowsCarousel';
 import { HiHeart} from 'react-icons/hi'
+import { Link } from 'react-router-dom';
 
 function ShowPreviews() {
   const [previews, setPreviews] = React.useState([]) // initialise state for  podcast preview
@@ -49,6 +50,8 @@ function ShowPreviews() {
           flex flex-col justify-start items-center p-4  rounded-md shadow-[0 0 16px 0 rgba(0, 0, 0, 0.1)]
           hover:cursor-pointer hover:translate-y-[-8px] hover:transition-all hover:shadow-[0 0 18px 0 rgba(0, 0, 0, 0.3)] 
           brightness-125 overflow-hidden'>
+            <Link to={preview.id} >
+
             <div>
               <HiHeart className=' font-bold text-4xl absolute flex  items-center bg-stone-400 top-2 right-1.5 p-1.5 rounded-[50%] z-[100]'/>
               <img 
@@ -71,6 +74,8 @@ function ShowPreviews() {
               </div>
               
             </div>
+            </Link>
+            
 
           </li>
         ))}
