@@ -40,7 +40,9 @@ const ShowDetails = () => {
 
  //use effect if data and seasons are available
  
- 
+ const handleSeasonChange = (event) => {
+  setSelectedSeason(Number(event.target.value));
+};
   
 //-----------------------------------------check for error----------------------------------------------
   if (error) {                 // if error display this message
