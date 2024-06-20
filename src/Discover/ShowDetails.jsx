@@ -8,6 +8,8 @@ const ShowDetails = () => {
   const {id} = useParams()    
   const location = useLocation()        //use params to fetch each show id
   const [show, setShow] = React.useState([])   //init state to set show info    
+  const [selectedSeason, setSelectedSeason] = useState(null);       //add hooks for episodes and seasons
+  const [episodesBySeason, setEpisodesBySeason] = useState([]);
  
 //----------------fetch data-------------------------------
   React.useEffect(() => {
@@ -47,7 +49,7 @@ const type = location.state?.type || "all"
   // check if there is a show is valid then displays or else show....loading..
   // @returns image , title, desciption, eps and seasons
 //-------------------filter for seasons-----------------------------------------------
-
+ 
   
   
   return (
