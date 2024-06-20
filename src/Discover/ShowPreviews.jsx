@@ -53,7 +53,6 @@ function ShowPreviews() {
             brightness-125 overflow-hidden'>
               
                 <div>
-                  <HiHeart className=' font-bold text-4xl absolute flex  items-center bg-stone-400 top-2 right-1.5 p-1.5 rounded-[50%] z-[100]'/>
                   <img 
                   src={preview.image} 
                   width={174}
