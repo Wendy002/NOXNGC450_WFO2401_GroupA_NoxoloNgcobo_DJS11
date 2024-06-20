@@ -8,8 +8,8 @@ const ShowDetails = () => {
   const {id} = useParams()    
   const location = useLocation()        //use params to fetch each show id
   const [show, setShow] = React.useState([])   //init state to set show info    
-  const [selectedSeason, setSelectedSeason] = useState(null);       //add hooks for episodes and seasons
-  const [episodesBySeason, setEpisodesBySeason] = useState([]);
+  const [selectedSeason, setSelectedSeason] = React.useState(null);       //add hooks for episodes and seasons
+  const [episodesBySeason, setEpisodesBySeason] = React.useState([]);
  
 //----------------fetch data-------------------------------
   React.useEffect(() => {
@@ -18,7 +18,9 @@ const ShowDetails = () => {
       try {
         const response = await fetch(`https://podcast-api.netlify.app/id/${id}`)          //fetch  data and set it to set show 
         const data = await response.json()
-        setShow(data)
+        setShow(data);
+        setSelectedSeason(data.seasons[0]);
+
 
         if (!response.ok) {
             throw Error("Data Fetching Failed")
@@ -35,6 +37,10 @@ const ShowDetails = () => {
 
   }, [id]) // return data
 
+
+ //use effect if data and seasons are available
+ 
+ 
   
 //-----------------------------------------check for error----------------------------------------------
   if (error) {                 // if error display this message
