@@ -57,9 +57,6 @@ const type = location.state?.type || "all"
   // check if there is a show is valid then displays or else show....loading..
   // @returns image , title, desciption, eps and seasons
 //-------------------filter for seasons-----------------------------------------------
-const filteredEpisodes = show.seasons
-  ? show.seasons.filter((season) => season.season === selectedSeason)
-  : [];
  
   
   
@@ -79,7 +76,6 @@ const filteredEpisodes = show.seasons
           <div className='grid grid-cols-2 sm:grid-cols-3 mt-10 pl-2 text-white' >
             
           </div>
-          <hr/>
           <div>
             {show.seasons && (
               <select
@@ -94,17 +90,21 @@ const filteredEpisodes = show.seasons
               </select>
             )}
             <ul>
-              {filteredEpisodes.map((episode) => (
-                <li key={episode.episode}>
-                  <h3>{episode.title}</h3>
-                  <p>{episode.description}</p>
-                  <audio controls>
-                    <source src={episode.file} type="audio/mpeg" />
-                    Your browser does not support the audio element.
-                  </audio>
-                </li>
-              ))}
-           </ul>
+            <hr/> 
+              {selectedSeason && (
+                    <>
+                      {selectedSeason.episodes.map((episode) => (
+                        <div key={episode.title}>
+                          <p>{episode.description}</p>
+                          <audio controls>
+                            <source src={episode.file} type="audio/mp3" />
+                            Your browser does not support the audio element.
+                          </audio>
+                        </div>
+                      ))}
+                    </>
+                  )}
+               </ul>
           </div>
         </div>   
         
