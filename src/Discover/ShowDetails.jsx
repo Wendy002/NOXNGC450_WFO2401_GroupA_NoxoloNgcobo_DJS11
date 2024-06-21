@@ -50,7 +50,7 @@ const ShowDetails = () => {
     setShowAll((prevShowAll) => !prevShowAll);
   };
 
-const visibleSeasons = showAll ? show.seasons : show.seasons.slice(0, 5);
+  const visibleSeasons = showAll ? show.seasons : show.seasons.slice(0, 5);
 
 
     
@@ -87,7 +87,7 @@ const visibleSeasons = showAll ? show.seasons : show.seasons.slice(0, 5);
             <div >
               <h3 className='text-5xl font-extrabold mb-4  md:text7xl '>Seasons</h3>
               <ul className='mb-6 '>
-                {visibleSeasons.map((season) => (
+                { visibleSeasons && visibleSeasons.map((season) => (
                   <li
                     key={season.season}
                     className='cursor-pointer mb-2'
@@ -106,9 +106,9 @@ const visibleSeasons = showAll ? show.seasons : show.seasons.slice(0, 5);
               {selectedSeason && (
                     <>
                       {selectedSeason.episodes.map((episode) => (
-                        <li key={episode.title} className='flex items-center border-b border-gray-300 py-4'>
+                        <li key={episode.title} className='flex justify-between items-center border-b border-gray-300 py-4'>
                           <div >
-                            <p className=' font-bold text-xl'>{episode.title}</p>
+                            <p className=' font-bold text-yellow-300 text-xl'>{episode.title}</p>
                             <p className='  font-normal line-clamp-2 flex-grow pr-10'>{episode.description}</p>
                           </div>
                          
