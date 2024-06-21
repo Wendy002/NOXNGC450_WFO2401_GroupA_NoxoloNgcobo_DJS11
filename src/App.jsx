@@ -16,7 +16,7 @@ const App = () => {
   };
   return (
     <BrowserRouter>
-      <div className=' flex flex-row min-h-screen w-full bg-gray-900'>
+      <div className=' flex flex-row min-h-screen w-full bg-gray-900 '>
         <SideBar menuOpen = {menuOpen}  onToggle={onToggle}/>   
         <div className='h-screen flex-1 p-7 overflow-x-hidden'> 
         <Routes>

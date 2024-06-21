@@ -107,14 +107,18 @@ const ShowDetails = () => {
                     <>
                       {selectedSeason.episodes.map((episode) => (
                         <li key={episode.title} className=''>
-                          <p className='  font-normal line-clamp-2 text-ellipsis'>{episode.description}</p><span>
-                          <HiHeart className=' font-bold text-4xl flex  items-center bg-stone-400 top-2 right-1.5 p-1.5 rounded-[50%] z-[100]'/>
-                          </span>
-                          <audio controls>
-                            <source src={episode.file} type="audio/mp3" />
-                            Your browser does not support the audio element.
-                          </audio>
+                          <p className='  font-normal line-clamp-2 text-ellipsis pr-10'>{episode.description}</p>
+                          <div className='flex flex-row gap-3'>
+                            
+                            <audio controls>
+                              <source src={episode.file} type="audio/mp3" />
+                              Your browser does not support the audio element.
+                            </audio>
+                            <HiHeart className=' font-bold text-4xl flex  items-center bg-stone-400 top-2 right-1.5 p-1.5 rounded-[50%] z-[100]'/>
+                          </div>
+                          
                         </li>
+                        
                       ))}
                     </>
                   )}
