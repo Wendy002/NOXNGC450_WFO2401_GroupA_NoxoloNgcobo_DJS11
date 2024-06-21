@@ -63,40 +63,41 @@ const ShowDetails = () => {
     <>
       
       {show.image && (
-        <div className=' text-white mt -10 flex gap-8  flex-col  md:items-end'>
-          <div>
+        <div className=' text-white mt -10 flex sm:flex-wrap gap-8  flex-col  md:items-end'>
+          <div  className='flex gap-3 justify-between'>
             <img className="rounded-md w-48 " src={show.image} alt={show.title} />
             <div className=' rounded-md p-6 bg-black flex flex-col'>
               <h1 className='text-5xl font-extrabold mb-4 md:text7xl'>{show.title}</h1>
               <p>{show.description}</p>
               <p className='text-yellow-400 font-normal'><span>Last updated: </span>{show.updated && typeof show.updated === 'string' ? show.updated.slice(0, 10) : 'N/A'}</p>
-              <HiHeart className=' font-bold text-4xl absolute flex  items-center bg-stone-400 top-2 right-1.5 p-1.5 rounded-[50%] z-[100]'/>
             </div>
           </div>
           
      
-          <div>
+          <div className='flex gap-8 justify-between'>
             <div >
-              <h3>Seasons</h3>
-              <ul>
+              <h3 className='text-5xl font-extrabold mb-4  md:text7xl '>Seasons</h3>
+              <ul className='mb-6 '>
                 {show.seasons.map((season) => (
                   <li
                     key={season.season}
-                    className='cursor-pointer'
+                    className='cursor-pointer mb-2'
                     onClick={() => handleSeasonSelect(season)}
                   >
-                    {season.season}: {season.title} ({season.episodes.length}{" "}
+                    {season.title} ({season.episodes.length}{" "}
                     episodes)
                   </li>
                 ))}
               </ul>
             </div>
-            <ul> 
+            <ul className='ml-6'> 
               {selectedSeason && (
                     <>
                       {selectedSeason.episodes.map((episode) => (
-                        <li key={episode.title}>
-                          <p>{episode.description}</p>
+                        <li key={episode.title} className=''>
+                          <p className='  font-normal line-clamp-2 text-ellipsis'>{episode.description}</p><span>
+                          <HiHeart className=' font-bold text-4xl flex  items-center bg-stone-400 top-2 right-1.5 p-1.5 rounded-[50%] z-[100]'/>
+                          </span>
                           <audio controls>
                             <source src={episode.file} type="audio/mp3" />
                             Your browser does not support the audio element.
