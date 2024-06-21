@@ -40,9 +40,10 @@ const ShowDetails = () => {
 
  //use effect if data and seasons are available
  
- const handleSeasonChange = (event) => {
-  setSelectedSeason(Number(event.target.value));
+ const handleSeasonSelect = (season) => {
+  setSelectedSeason(season === selectedSeason ? null : season);
 };
+
   
 //-----------------------------------------check for error----------------------------------------------
   if (error) {                 // if error display this message
@@ -51,9 +52,7 @@ const ShowDetails = () => {
   if (loading){
     return <h1 className='text-white font-extrabold text-3xl justify-center items-center'>Loading ....</h1>
   }
-//---------------------------------------------------------------------------------------------------
-const search = location.state?.search || "" // back up variable
-const type = location.state?.type || "all"  
+
   // check if there is a show is valid then displays or else show....loading..
   // @returns image , title, desciption, eps and seasons
 //-------------------filter for seasons-----------------------------------------------
@@ -65,49 +64,51 @@ const type = location.state?.type || "all"
       
       {show && (
         <div key={id} className=' text-white mt -10 flex gap-8 flex-col md:flex-row md:items-end'>
-          <img className="rounded-md w-48 " src={show.image} alt={show.title} />
-          <div className=' rounded-md p-6 bg-black flex flex-col'>
-            <p>Episodes</p>
-            <h1 className='text-5xl font-extrabold mb-4 md:text7xl'>{show.title}</h1>
-            <p>{show.description}</p>
-            <p className='text-yellow-400 font-normal'><span>Last updated: </span>{show.updated && typeof show.updated === 'string' ? show.updated.slice(0, 10) : 'N/A'}</p>
-            <HiHeart className=' font-bold text-4xl absolute flex  items-center bg-stone-400 top-2 right-1.5 p-1.5 rounded-[50%] z-[100]'/>
-          </div>
-          <div className='grid grid-cols-2 sm:grid-cols-3 mt-10 pl-2 text-white' >
-            
-          </div>
           <div>
-            {show.seasons && (
-              <select
-                value={selectedSeason}
-                onChange={handleSeasonChange }
-              >
-                {show.seasons.map((season) => (
-                  <option key={season.season} value={season.season}>
-                    {season.title}
-                  </option>
-                ))}
-              </select>
-            )}
-            <ul>
-            <hr/> 
-              {selectedSeason && (
-                    <>
-                      {selectedSeason.episodes.map((episode) => (
-                        <div key={episode.title}>
-                          <p>{episode.description}</p>
-                          <audio controls>
-                            <source src={episode.file} type="audio/mp3" />
-                            Your browser does not support the audio element.
-                          </audio>
-                        </div>
-                      ))}
-                    </>
-                  )}
-               </ul>
+            <img className="rounded-md w-48 " src={show.image} alt={show.title} />
+            <div className=' rounded-md p-6 bg-black flex flex-col'>
+              <h1 className='text-5xl font-extrabold mb-4 md:text7xl'>{show.title}</h1>
+              <p>{show.description}</p>
+              <p className='text-yellow-400 font-normal'><span>Last updated: </span>{show.updated && typeof show.updated === 'string' ? show.updated.slice(0, 10) : 'N/A'}</p>
+              <HiHeart className=' font-bold text-4xl absolute flex  items-center bg-stone-400 top-2 right-1.5 p-1.5 rounded-[50%] z-[100]'/>
+            </div>
           </div>
-        </div>   
-        
+          
+          <div className="flex flex-wrap justify-center mb-4">
+            <div className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
+              <h2 className="text-3xl font-bold mb-2">Seasons</h2>
+              <ul className="list-none m-0 p-0">
+                {show.seasons.map((season) => (
+                  <li
+                    key={season.season}
+                    className="text-lg py-2 border-b border-gray-200"
+                    onClick={() => handleSeasonSelect(season)}
+                  >
+                    {season.season}: {season.title} ({season.episodes.length} episodes)
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="w-full md:w-1/2 lg:w-2/3 xl:w-3/4 p-4">
+              <h2 className="text-3xl font-bold mb-2">Episodes</h2>
+              <ul className="list-none m-0 p-0">
+                {selectedSeason && (
+                  <>
+                    {selectedSeason.episodes.map((episode) => (
+                      <li key={episode.title} className="text-lg py-2 border-b border-gray-200">
+                        <p>{episode.description}</p>
+                        <audio controls>
+                          <source src={episode.file} type="audio/mp3" />
+                          Your browser does not support the audio element.
+                        </audio>
+                      </li>
+                    ))}
+                  </>
+                )}
+              </ul>
+            </div>
+         </div>
+        </div>     
       )}
     
     </>
