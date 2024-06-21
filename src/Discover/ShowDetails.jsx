@@ -41,16 +41,16 @@ const ShowDetails = () => {
 
  //use effect if data and seasons are available
  
-  const handleSeasonSelect = (season) => {
-    setSelectedSeason(season === selectedSeason ? null : season);
-  };
+ const handleSeasonSelect = (season) => {
+  setSelectedSeason(season === selectedSeason ? null : season);
+};
 
 
   const handleShowMoreClick = () => {
     setShowAll((prevShowAll) => !prevShowAll);
   };
 
-  const visibleSeasons = showAll ? show.seasons : show.seasons.slice(0, 5);
+const visibleSeasons = showAll ? show.seasons : show.seasons.slice(0, 5);
 
 
     
@@ -62,10 +62,10 @@ const ShowDetails = () => {
       return <h1 className='text-white font-extrabold text-3xl justify-center items-center'>Loading ....</h1>
     }
 
-    // check if there is a show is valid then displays or else show....loading..
-    // @returns image , title, desciption, eps and seasons
-  //-------------------filter for seasons-----------------------------------------------
-  
+  // check if there is a show is valid then displays or else show....loading..
+  // @returns image , title, desciption, eps and seasons
+//-------------------filter for seasons-----------------------------------------------
+ 
   
   
   return (
@@ -118,7 +118,6 @@ const ShowDetails = () => {
                           </div>
                           
                         </li>
-                        
                       ))}
                     </>
                   )}
