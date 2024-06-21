@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 
-const ShowsCarousel = () => {
+
+const ShowsCarousel = (props) => {
   return (
     <div>showsCarousel</div>
   )

@@ -62,8 +62,8 @@ const ShowDetails = () => {
   return (
     <>
       
-      {show && (
-        <div key={id} className=' text-white mt -10 flex gap-8 flex-col md:flex-row md:items-end'>
+      {show.image && (
+        <div className=' text-white mt -10 flex gap-8  flex-col  md:items-end'>
           <div>
             <img className="rounded-md w-48 " src={show.image} alt={show.title} />
             <div className=' rounded-md p-6 bg-black flex flex-col'>

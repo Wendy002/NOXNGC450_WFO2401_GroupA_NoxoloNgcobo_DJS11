@@ -1,8 +1,9 @@
 import React from 'react'
 import { SiApplemusic } from "react-icons/si";
-import ShowsCarousel from './ShowsCarousel';
+import ShowsCarousel from './ShowsCarousel.jsx';
 import { HiHeart} from 'react-icons/hi'
 import { Link } from 'react-router-dom';
+
 
 function ShowPreviews() {
   const [previews, setPreviews] = React.useState([]) // initialise state for  podcast preview
@@ -38,11 +39,12 @@ function ShowPreviews() {
   if (loading){
     return <h1 className='text-white font-extrabold text-3xl justify-center items-center'>Loading ....</h1>
   }
-
+ 
 
   return (
     <> 
-
+      
+       <ShowsCarousel/>
 
        <ul className='list-none flex flex-wrap ml-8 text-white gap-10  justify-start'>
         {previews.map(preview => (
