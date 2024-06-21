@@ -74,41 +74,41 @@ const ShowDetails = () => {
             </div>
           </div>
           
-          <div className="flex flex-wrap justify-center mb-4">
-            <div className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
-              <h2 className="text-3xl font-bold mb-2">Seasons</h2>
-              <ul className="list-none m-0 p-0">
+     
+          <div>
+            <div >
+              <h3>Seasons</h3>
+              <ul>
                 {show.seasons.map((season) => (
                   <li
                     key={season.season}
-                    className="text-lg py-2 border-b border-gray-200"
+                    className='cursor-pointer'
                     onClick={() => handleSeasonSelect(season)}
                   >
-                    {season.season}: {season.title} ({season.episodes.length} episodes)
+                    {season.season}: {season.title} ({season.episodes.length}{" "}
+                    episodes)
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="w-full md:w-1/2 lg:w-2/3 xl:w-3/4 p-4">
-              <h2 className="text-3xl font-bold mb-2">Episodes</h2>
-              <ul className="list-none m-0 p-0">
-                {selectedSeason && (
-                  <>
-                    {selectedSeason.episodes.map((episode) => (
-                      <li key={episode.title} className="text-lg py-2 border-b border-gray-200">
-                        <p>{episode.description}</p>
-                        <audio controls>
-                          <source src={episode.file} type="audio/mp3" />
-                          Your browser does not support the audio element.
-                        </audio>
-                      </li>
-                    ))}
-                  </>
-                )}
-              </ul>
-            </div>
-         </div>
-        </div>     
+            <ul> 
+              {selectedSeason && (
+                    <>
+                      {selectedSeason.episodes.map((episode) => (
+                        <li key={episode.title}>
+                          <p>{episode.description}</p>
+                          <audio controls>
+                            <source src={episode.file} type="audio/mp3" />
+                            Your browser does not support the audio element.
+                          </audio>
+                        </li>
+                      ))}
+                    </>
+                  )}
+             </ul>
+          </div>
+        </div>   
+        
       )}
     
     </>
