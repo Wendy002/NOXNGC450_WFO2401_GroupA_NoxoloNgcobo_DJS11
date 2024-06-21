@@ -5,11 +5,12 @@ import { HiHeart } from 'react-icons/hi'
 const ShowDetails = () => {
   const [loading, setLoading] = React.useState(false)
   const [error, setError] = React.useState(null)
+  const [showAll, setShowAll] = React.useState(false);
   const {id} = useParams()    
   const location = useLocation()        //use params to fetch each show id
   const [show, setShow] = React.useState([])   //init state to set show info    
   const [selectedSeason, setSelectedSeason] = React.useState(null);       //add hooks for episodes and seasons
-  const [episodesBySeason, setEpisodesBySeason] = React.useState([]);
+  
  
 //----------------fetch data-------------------------------
   React.useEffect(() => {
@@ -40,23 +41,31 @@ const ShowDetails = () => {
 
  //use effect if data and seasons are available
  
- const handleSeasonSelect = (season) => {
-  setSelectedSeason(season === selectedSeason ? null : season);
-};
+  const handleSeasonSelect = (season) => {
+    setSelectedSeason(season === selectedSeason ? null : season);
+  };
 
+
+  const handleShowMoreClick = () => {
+    setShowAll((prevShowAll) => !prevShowAll);
+  };
+
+  const visibleSeasons = showAll ? show.seasons : show.seasons.slice(0, 5);
+
+
+    
+  //-----------------------------------------check for error----------------------------------------------
+    if (error) {                 // if error display this message
+      return <h1 className='text-red-600 font-extrabold'>{error.message}</h1>
+    }
+    if (loading){
+      return <h1 className='text-white font-extrabold text-3xl justify-center items-center'>Loading ....</h1>
+    }
+
+    // check if there is a show is valid then displays or else show....loading..
+    // @returns image , title, desciption, eps and seasons
+  //-------------------filter for seasons-----------------------------------------------
   
-//-----------------------------------------check for error----------------------------------------------
-  if (error) {                 // if error display this message
-    return <h1 className='text-red-600 font-extrabold'>{error.message}</h1>
-  }
-  if (loading){
-    return <h1 className='text-white font-extrabold text-3xl justify-center items-center'>Loading ....</h1>
-  }
-
-  // check if there is a show is valid then displays or else show....loading..
-  // @returns image , title, desciption, eps and seasons
-//-------------------filter for seasons-----------------------------------------------
- 
   
   
   return (
@@ -78,7 +87,7 @@ const ShowDetails = () => {
             <div >
               <h3 className='text-5xl font-extrabold mb-4  md:text7xl '>Seasons</h3>
               <ul className='mb-6 '>
-                {show.seasons.map((season) => (
+                {visibleSeasons.map((season) => (
                   <li
                     key={season.season}
                     className='cursor-pointer mb-2'
@@ -88,6 +97,9 @@ const ShowDetails = () => {
                     episodes)
                   </li>
                 ))}
+                <li className='cursor-pointer text-blue-500' onClick={handleShowMoreClick}>
+                  {showAll ? 'Hide' : 'Show More'}
+                </li>
               </ul>
             </div>
             <ul className='ml-6'> 
