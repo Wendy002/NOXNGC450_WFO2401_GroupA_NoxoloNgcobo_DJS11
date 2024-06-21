@@ -5,12 +5,14 @@ import { HiHeart} from 'react-icons/hi'
 import { Link } from 'react-router-dom';
 import Filters from '../Layout-components/Filters.jsx';
 import Searchbar from '../Layout-components/Searchbar.jsx';
-
+import Fuse from "fuse.js"
 
 function ShowPreviews() {
   const [previews, setPreviews] = React.useState([]) // initialise state for  podcast preview
   const [error, setError] = React.useState(null) //  initialise state for  error messages
   const [loading, setLoading] = React.useState(false)
+  // const [query, setQuery] = React.useState(null)
+  // const [previewState, setPreviewState] = React.useState(previews);
   
   
   React.useEffect(()=>{    //set use effect hook for handling api calls
@@ -35,6 +37,33 @@ function ShowPreviews() {
     addPreviews()  // call function
    }, [])
 
+  // let matchingTitleShows;
+
+
+  // const handleInput = (event) => {
+  //   const input = event.target.value;
+  //   setQuery(input);
+  // };
+
+  // const handleSearch = () => {
+  //   if (query) {
+  //     // Use Fuse.js for fuzzy searching
+  //     const options = {
+  //       keys: ["title"], // Specify the fields you want to search
+  //       includeScore: true,
+  //     };
+  //     const fuse = new Fuse(previews, options);
+  //     const results = fuse.search(query);
+      
+  //     // Extract only the items from the results (without the score)
+  //     matchingTitleShows = results.map((result) => result.item);
+
+  //     setPreviewState(matchingTitleShows);
+  //   } else {
+  //     setPreviewState(preview);
+  //   }
+  // };
+
   if (error) {                 // if error display this message
     return <h1 className='text-red-600 font-extrabold'>{error.message}</h1>
   }
@@ -46,7 +75,7 @@ function ShowPreviews() {
   return (
     <> 
        
-
+    
        <ul className='list-none flex flex-wrap ml-8 text-white gap-10  justify-start'>
         {previews.map(preview => (
           <Link key={preview.id} to={`/show/${preview.id}`}>
