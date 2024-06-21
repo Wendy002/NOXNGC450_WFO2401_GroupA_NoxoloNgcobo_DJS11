@@ -3,6 +3,8 @@ import { SiApplemusic } from "react-icons/si";
 import ShowsCarousel from './ShowsCarousel.jsx';
 import { HiHeart} from 'react-icons/hi'
 import { Link } from 'react-router-dom';
+import Filters from '../Layout-components/Filters.jsx';
+import Searchbar from '../Layout-components/Searchbar.jsx';
 
 
 function ShowPreviews() {
@@ -39,12 +41,11 @@ function ShowPreviews() {
   if (loading){
     return <h1 className='text-white font-extrabold text-3xl justify-center items-center'>Loading ....</h1>
   }
- 
+
 
   return (
     <> 
-      
-       <ShowsCarousel/>
+       
 
        <ul className='list-none flex flex-wrap ml-8 text-white gap-10  justify-start'>
         {previews.map(preview => (

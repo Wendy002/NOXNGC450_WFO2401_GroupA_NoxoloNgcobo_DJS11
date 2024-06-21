@@ -5,7 +5,7 @@ import Favourites from './Favourites/Favourites.jsx'
 import ShowPreviews from './Discover/ShowPreviews.jsx'
 import ShowDetails from './Discover/ShowDetails.jsx'
 import ShowsCarousel from './Discover/ShowsCarousel.jsx'
-import AudioPlayer from './Layout-components/AudioPlayer.jsx'
+
 
 const App = () => {
 
@@ -28,9 +28,6 @@ f
 
         </div>
         
-      </div>
-      <div className='sticky bottom-0 z-100'>
-       < AudioPlayer/>
       </div>
     </BrowserRouter>
   

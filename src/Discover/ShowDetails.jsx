@@ -72,8 +72,8 @@ const visibleSeasons = showAll ? show.seasons : show.seasons.slice(0, 5);
     <>
       
       {show.image && (
-        <div className=' text-white mt -10 flex sm:flex-wrap gap-8  flex-col  md:items-end'>
-          <div  className='flex gap-3 justify-between'>
+        <div className=' text-white mt-10 flex sm:flex-wrap gap-8  flex-col  md:items-end'>
+          <div  className='flex flex-col md:flex-row gap-3 justify-between'>
             <img className="rounded-md w-48 " src={show.image} alt={show.title} />
             <div className=' rounded-md p-6 bg-black flex flex-col'>
               <h1 className='text-5xl font-extrabold mb-4 md:text7xl'>{show.title}</h1>
@@ -83,7 +83,7 @@ const visibleSeasons = showAll ? show.seasons : show.seasons.slice(0, 5);
           </div>
           
      
-          <div className='flex gap-8 justify-between'>
+          <div className='flex flex-col md:flex-ro justify-between'>
             <div >
               <h3 className='text-5xl font-extrabold mb-4  md:text7xl '>Seasons</h3>
               <ul className='mb-6 '>
@@ -102,15 +102,19 @@ const visibleSeasons = showAll ? show.seasons : show.seasons.slice(0, 5);
                 </li>
               </ul>
             </div>
-            <ul className='ml-6'> 
+            <ul> 
               {selectedSeason && (
                     <>
                       {selectedSeason.episodes.map((episode) => (
-                        <li key={episode.title} className=''>
-                          <p className='  font-normal line-clamp-2 text-ellipsis pr-10'>{episode.description}</p>
-                          <div className='flex flex-row gap-3'>
+                        <li key={episode.title} className='flex items-center border-b border-gray-300 py-4'>
+                          <div >
+                            <p className=' font-bold text-xl'>{episode.title}</p>
+                            <p className='  font-normal line-clamp-2 flex-grow pr-10'>{episode.description}</p>
+                          </div>
+                         
+                          <div className='flex  gap-3'>
                             
-                            <audio controls>
+                            <audio className='bg-gray-700' controls>
                               <source src={episode.file} type="audio/mp3" />
                               Your browser does not support the audio element.
                             </audio>
