@@ -20,12 +20,13 @@ function ShowPreviews() {
       setLoading(true)
       try {
         const response = await fetch('https://podcast-api.netlify.app')          //fetch  data and set it to set preview
+        
+        if (!response.ok) {
+          throw Error("Data Fetching Failed")
+      }
+        
         const data = await response.json()
         setPreviews(data)
-
-        if (!response.ok) {
-            throw Error("Data Fetching Failed")
-        }
 
       } catch (err) {
         setError(err)        //set error to err

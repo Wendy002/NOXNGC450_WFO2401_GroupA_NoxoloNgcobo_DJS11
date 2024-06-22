@@ -10,6 +10,7 @@ const ShowDetails = () => {
   const location = useLocation()        //use params to fetch each show id
   const [show, setShow] = React.useState([])   //init state to set show info    
   const [selectedSeason, setSelectedSeason] = React.useState(null);       //add hooks for episodes and seasons
+  const [slicedSeasons, setSlicedSeasons] = React.useState([]);
   
  
 //----------------fetch data-------------------------------
@@ -18,14 +19,15 @@ const ShowDetails = () => {
       setLoading(true)
       try {
         const response = await fetch(`https://podcast-api.netlify.app/id/${id}`)          //fetch  data and set it to set show 
+        
+        if (!response.ok) {
+          throw Error("Data Fetching Failed")
+      }
+        
         const data = await response.json()
         setShow(data);
         setSelectedSeason(data.seasons[0]);
-
-
-        if (!response.ok) {
-            throw Error("Data Fetching Failed")
-        }
+        setSlicedSeasons(data.seasons.slice(0, 5));   // slice the season to show 
 
       } catch (err) {
         setError(err)        //set error to err
@@ -50,10 +52,8 @@ const ShowDetails = () => {
     setShowAll((prevShowAll) => !prevShowAll);
   };
 
-  const visibleSeasons = showAll ? show.seasons : show.seasons.slice(0, 5);
-
-
-    
+  const visibleSeasons = showAll ? show.seasons : slicedSeasons;     // hide some seasons
+      
   //-----------------------------------------check for error----------------------------------------------
     if (error) {                 // if error display this message
       return <h1 className='text-red-600 font-extrabold'>{error.message}</h1>
