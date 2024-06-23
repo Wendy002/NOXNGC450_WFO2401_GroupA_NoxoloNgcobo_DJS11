@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import FavSortFilters from './FavSortFilters';
 
 const Favourites = () => {
-  // const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites') || '[]'));
+  const [filteredFavorites, setFilteredFavorites] = useState([]);
 
   // useEffect(() => {
   //   localStorage.setItem('favorites', JSON.stringify(favorites));
