@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link, useParams, useLocation} from 'react-router-dom'
-import { HiHeart } from 'react-icons/hi'
+import FavouriteButton from './FavouriteButton.jsx'
+import { v4 as uuidv4 } from 'uuid';
 
 const ShowDetails = () => {
   const [loading, setLoading] = React.useState(false)
