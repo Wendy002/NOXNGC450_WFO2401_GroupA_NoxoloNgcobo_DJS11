@@ -10,10 +10,52 @@ const Favourites = () => {
     setFilteredFavorites(favorites);
   }, []); // Empty dependency array ensures this effect runs only once on mount
 
-  // const handleDeleteEpisode = (episode) => {
-  //   const newFavorites = favorites.filter((favorite) => favorite.episodeTitle !== episode.episodeTitle);
-  //   setFavorites(newFavorites);
-  // };
+  const handleDeleteEpisode = (index) => {
+    const newFavorites = [...filteredFavorites];
+    newFavorites.splice(index, 1);
+    localStorage.setItem("favorites", JSON.stringify(newFavorites));
+    setFilteredFavorites(newFavorites);
+  };
+   
+  const handleFavePageFilter = (event) => {
+    const filterType = event.target.innerText;
+  
+    switch (filterType) {
+      case 'All':
+        setFilteredFavorites(filteredFavorites);
+        break;
+      case 'A-Z':
+        setFilteredFavorites([...filteredFavorites].sort((a, b) => a.showTitle.localeCompare(b.showTitle)));
+        break;
+      case 'Z-A':
+        setFilteredFavorites([...filteredFavorites].sort((a, b) => b.showTitle.localeCompare(a.showTitle)));
+        break;
+      case 'Newest':
+        setFilteredFavorites([...filteredFavorites].sort((a, b) => new Date(b.seasonUpdated) - new Date(a.seasonUpdated)));
+        break;
+      case 'Oldest':
+        setFilteredFavorites([...filteredFavorites].sort((a, b) => new Date(a.seasonUpdated) - new Date(b.seasonUpdated)));
+        break;
+      default:
+        setFilteredFavorites(filteredFavorites);
+    }
+  };
+  
+
+  const groupEpisodesByShow = (favorites) => {
+    const grouped = {};
+    favorites.forEach((favEpisode, index) => {
+      if (!grouped[favEpisode.showTitle]) {
+        grouped[favEpisode.showTitle] = { showTitle: favEpisode.showTitle, episodes: [] };
+      }
+      grouped[favEpisode.showTitle].episodes.push({ ...favEpisode, index });
+    });
+    return Object.values(grouped);
+  };
+  
+
+  //call the function groupEpisodebbShow
+  const groupedFavoritesEpisode = groupEpisodesByShow(filteredFavorites);
 
   return (
 
