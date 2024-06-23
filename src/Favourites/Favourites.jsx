@@ -4,9 +4,11 @@ import FavSortFilters from './FavSortFilters';
 const Favourites = () => {
   const [filteredFavorites, setFilteredFavorites] = useState([]);
 
-  // useEffect(() => {
-  //   localStorage.setItem('favorites', JSON.stringify(favorites));
-  // }, [favorites]);
+  useEffect(() => {
+    // Load favorites from local storage when the component mounts
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    setFilteredFavorites(favorites);
+  }, []); // Empty dependency array ensures this effect runs only once on mount
 
   // const handleDeleteEpisode = (episode) => {
   //   const newFavorites = favorites.filter((favorite) => favorite.episodeTitle !== episode.episodeTitle);
