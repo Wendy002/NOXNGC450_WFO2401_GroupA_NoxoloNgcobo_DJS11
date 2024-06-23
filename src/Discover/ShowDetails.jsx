@@ -54,6 +54,35 @@ const ShowDetails = () => {
 
   const visibleSeasons = showAll ? show.seasons : slicedSeasons;     // hide some seasons
       
+  const addToFavorites = (episode) => {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+ 
+    const addEpisode = {
+      showTitle: show.title,
+      seasonUpdated: show.updated,
+      seasonTitle: selectedSeason.title,
+      episodeTitle: episode.title,
+      episodeAudio: episode.file,
+      addedDate: new Date().toLocaleString(),
+      
+    };
+  
+    const isInFavorites = favorites.some(
+      (favEpisode) =>
+        favEpisode.showTitle === addEpisode.showTitle &&
+        favEpisode.seasonUpdated === addEpisode.seasonUpdated &&
+        favEpisode.seasonTitle === addEpisode.seasonTitle &&
+        favEpisode.episodeTitle === addEpisode.episodeTitle &&
+        favEpisode.episodeAudio === addEpisode.episodeAudio
+    );
+  
+    if (!isInFavorites) {
+      favorites.push(addEpisode);
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+    }
+  };
+
+      
   //-----------------------------------------check for error----------------------------------------------
     if (error) {                 // if error display this message
       return <h1 className='text-red-600 font-extrabold'>{error.message}</h1>
