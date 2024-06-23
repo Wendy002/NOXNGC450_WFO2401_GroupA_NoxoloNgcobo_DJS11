@@ -58,27 +58,44 @@ const Favourites = () => {
   const groupedFavoritesEpisode = groupEpisodesByShow(filteredFavorites);
 
   return (
-
-    <h1> Favourites</h1>
-    // <div className='text-white'>
-    //   <h2 className='text-3xl text-white font-extrabold mb-4 md:text-5xl'>Favourites episodes</h2>
-    //   <ul>
-    //     {favorites.map((favorite) => (
-    //       <div key={favorite.episodeTitle} className='flex justify-between '>
-    //         <li >
-    //           <p>{favorite.showTitle}: {favorite.episodeTitle}</p>
-    //         </li> 
-    //         <button
-    //           className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'
-    //           onClick={() => handleDeleteEpisode(favorite)}
-    //         >
-    //           Delete
-    //         </button>
-    //       </div>
-    //     ))}
-    //   </ul>
-    // </div>
+    <>
+        
+      
+      <div className='text-white'>
+        <h2 className='text-3xl text-white font-extrabold mb-4 md:text-5xl'>Favourites episodes</h2>
+        <FavSortFilters  handleFavePageFilter= {handleFavePageFilter}/>
+        <ul className='space-y-4 mt-8'>
+          {groupedFavoritesEpisode.map((group, groupIndex) => (
+            <li key={groupIndex} className='flex flex-col '>
+               <h3 className='text-xl font-bold text-orange-300'>{group.showTitle}</h3>
+               <h4 className=''>{group.seasonUpdated}</h4>
+               <ul className='space-y-2'>
+                {group.episodes.map((favEpisode, index) => (
+                  <li key={index} className='flex items-center' >
+                    {/* Render information about the favorite episode */}
+                    <span>{favEpisode.episodeTitle}</span>
+                    <span className='text-gray-400 ml-2 mr-3'>(Added: {favEpisode.addedDate})</span>
+                    <audio className='ml-auto' controls>
+                      <source src={favEpisode.episodeAudio} type='audio/mp3' />
+                      Your browser does not support the audio element.
+                    </audio>
+                    <button
+                        className='bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 ml-8 rounded'
+                        onClick={() => handleDeleteEpisode(favEpisode.originalIndex)}>
+                      Delete
+                    </button>
+                  </li>
+                ))}
+              </ul>  
+              
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
+   
   );
 };
 
 export default Favourites;
+
