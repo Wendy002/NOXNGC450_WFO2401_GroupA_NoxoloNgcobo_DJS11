@@ -54,7 +54,7 @@ const ShowDetails = () => {
   };
 
   const visibleSeasons = showAll ? show.seasons : slicedSeasons;     // hide some seasons
-      
+
   const addToFavorites = (episode) => {
     const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
  
@@ -113,18 +113,27 @@ const ShowDetails = () => {
           </div>
           
      
-          <div className='flex flex-col md:flex-ro justify-between'>
-            <div >
-              <h3 className='text-5xl font-extrabold mb-4  md:text7xl '>Seasons</h3>
+          <div className='flex flex-col md:flex-row gap-4 justify-between'>
+            <div className='mb-4 md:mb-0'>
+              <h3 className='text-3xl font-extrabold mb-4  md:text5xl '>Seasons</h3>
               <ul className='mb-6 '>
                 { visibleSeasons && visibleSeasons.map((season) => (
                   <li
                     key={season.season}
-                    className='cursor-pointer mb-2'
+                    
                     onClick={() => handleSeasonSelect(season)}
-                  >
-                    {season.title} ({season.episodes.length}{" "}
-                    episodes)
+                  >  
+                      <div className='flex flex-row cursor-pointer mb-2 px-2 py-1 rounded transition-colors hover:bg-orange-400 hover:text-black focus:text-black focus:bg-orange-200'>
+                        <img
+                            src={season.image} // Placeholder image URL
+                            alt={show.image}
+                            width={50}
+                            height={20}
+                            className='mr-2'
+                          />
+                        {season.title} ({season.episodes.length}{" "}
+                        episodes)
+                      </div> 
                   </li>
                 ))}
                 <li className='cursor-pointer text-blue-500' onClick={handleShowMoreClick}>
@@ -132,7 +141,7 @@ const ShowDetails = () => {
                 </li>
               </ul>
             </div>
-            <ul> 
+            <ul className='ml-8 md:pl-8'> 
               {selectedSeason && (
                     <>
                       {selectedSeason.episodes.map((episode) => (
@@ -144,11 +153,15 @@ const ShowDetails = () => {
                          
                           <div className='flex  gap-3'>
                             
-                            <audio className='bg-gray-700' controls>
+                            <audio controls>
                               <source src={episode.file} type="audio/mp3" />
                               Your browser does not support the audio element.
                             </audio>
-                            <HiHeart className=' font-bold text-4xl flex  items-center bg-stone-400 top-2 right-1.5 p-1.5 rounded-[50%] z-[100]'/>
+                            <FavouriteButton
+                              key= {uuidv4()}
+                              id= {uuidv4()} 
+                              addToFavorites= {()=> addToFavorites(episode)}  
+                            />
                           </div>
                           
                         </li>
