@@ -9,7 +9,7 @@ import ShowsCarousel from './Discover/ShowsCarousel.jsx'
 
 const App = () => {
 
-  const [menuOpen, setMenuOpen] =React.useState(true); 
+  const [menuOpen, setMenuOpen] =React.useState(false); 
 
   const onToggle = () => {
     setMenuOpen(!menuOpen);
