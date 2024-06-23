@@ -1,14 +1,14 @@
 import React from 'react'
-import {Link, useParams, useLocation} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
 import FavouriteButton from './FavouriteButton.jsx'
 import { v4 as uuidv4 } from 'uuid';
+import { HiArrowLeftCircle } from 'react-icons/hi2';
 
 const ShowDetails = () => {
   const [loading, setLoading] = React.useState(false)
   const [error, setError] = React.useState(null)
   const [showAll, setShowAll] = React.useState(false);
   const {id} = useParams()    
-  const location = useLocation()        //use params to fetch each show id
   const [show, setShow] = React.useState([])   //init state to set show info    
   const [selectedSeason, setSelectedSeason] = React.useState(null);       //add hooks for episodes and seasons
   const [slicedSeasons, setSlicedSeasons] = React.useState([]);
@@ -100,6 +100,11 @@ const ShowDetails = () => {
   
   return (
     <>
+      <Link
+          to="/"
+          relative="path"
+          
+      ><HiArrowLeftCircle className="bg-[#ff564a] text-5xl rounded-full text-black hover:bg-white "/> <span className='text-white'>Back to all shows</span></Link>
       
       {show.image && (
         <div className=' text-white mt-10 flex sm:flex-wrap gap-8  flex-col  md:items-end'>
