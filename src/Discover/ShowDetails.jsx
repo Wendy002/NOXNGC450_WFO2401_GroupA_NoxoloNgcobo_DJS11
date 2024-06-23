@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Link, useParams} from 'react-router-dom'
 import FavouriteButton from './FavouriteButton.jsx'
 import { v4 as uuidv4 } from 'uuid';
 import { HiArrowLeftCircle } from 'react-icons/hi2';
 
-const ShowDetails = () => {
+const ShowDetails = ({menuOpen}) => {
   const [loading, setLoading] = React.useState(false)
   const [error, setError] = React.useState(null)
   const [showAll, setShowAll] = React.useState(false);
@@ -41,7 +41,7 @@ const ShowDetails = () => {
 
   }, [id]) // return data
 
-
+ console.log(show.genres)
  //use effect if data and seasons are available
  
  const handleSeasonSelect = (season) => {
@@ -113,7 +113,7 @@ const ShowDetails = () => {
             <div className=' rounded-md p-6 bg-black flex flex-col'>
               <h1 className='text-5xl font-extrabold mb-4 md:text7xl'>{show.title}</h1>
               <p>{show.description}</p>
-              <p className='text-yellow-400 font-normal'><span>Last updated: </span>{show.updated && typeof show.updated === 'string' ? show.updated.slice(0, 10) : 'N/A'}</p>
+              <p className='text-yellow-400 font-normal'><span>Last updated: </span>{show.updated && typeof show.updated === 'string' ? show.updated.slice(0, 10) : 'N/A'}</p><span>Genres: {show.genres.join(', ')}</span>
             </div>
           </div>
           
