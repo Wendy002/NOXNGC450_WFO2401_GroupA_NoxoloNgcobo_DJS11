@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import FavSortFilters from './FavSortFilters';
+import { HiArrowLeftCircle } from 'react-icons/hi2';
+import { Link } from 'react-router-dom';
 
 const Favourites = () => {
-  const [filteredFavorites, setFilteredFavorites] = useState([]);
+  const [filteredFavorites, setFilteredFavorites] = React.useState([]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     // Load favorites from local storage when the component mounts
     const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     setFilteredFavorites(favorites);
@@ -60,9 +62,15 @@ const Favourites = () => {
   return (
     <>
         
-      
+
       <div className='text-white'>
-        <h2 className='text-3xl text-white font-extrabold mb-4 md:text-5xl'>Favourites episodes</h2>
+        <Link
+            to="/"
+            relative="path"
+            
+        ><HiArrowLeftCircle className="bg-[#ff564a] text-5xl rounded-full text-black hover:bg-white "/> <span className='text-white'>Back to all shows</span>
+        </Link>
+        <h2 className='text-3xl text-white mt-4 font-extrabold mb-4 md:text-5xl'>Favourites episodes</h2>
         <FavSortFilters  handleFavePageFilter= {handleFavePageFilter}/>
         <ul className='space-y-4 mt-8'>
           {groupedFavoritesEpisode.map((group, groupIndex) => (
