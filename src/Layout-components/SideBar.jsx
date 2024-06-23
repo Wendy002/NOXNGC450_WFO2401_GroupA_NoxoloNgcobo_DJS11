@@ -25,7 +25,7 @@ const SideBar = ({menuOpen, onToggle}) => {
             <div className="flex gap-x-4 items-center">
                 <img className= {`cursor-pointer 'text-[#ff564a] duration-500 ${
                     menuOpen
-                  }`} src='../assets/icon.svg'/>
+                  }`} src= '../../public/icon.svg'/>
                 <p className={`text-[#ff564a] font-bold text-2xl origin-left  duration-200 ${
               !menuOpen && "scale-0"
             }`}>GenZ<span className='text-white'>cast</span></p>
