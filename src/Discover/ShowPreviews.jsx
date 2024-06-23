@@ -1,7 +1,5 @@
 import React from 'react'
-import { SiApplemusic } from "react-icons/si";
 import ShowsCarousel from './ShowsCarousel.jsx';
-import { HiHeart} from 'react-icons/hi'
 import { Link } from 'react-router-dom';
 import Filters from '../Layout-components/Filters.jsx';
 import Searchbar from '../Layout-components/Searchbar.jsx';
@@ -11,8 +9,25 @@ function ShowPreviews() {
   const [previews, setPreviews] = React.useState([]) // initialise state for  podcast preview
   const [error, setError] = React.useState(null) //  initialise state for  error messages
   const [loading, setLoading] = React.useState(false)
+  const [previewsLastState, setPreviewsLastState] = React.useState();
+
+
   // const [query, setQuery] = React.useState(null)
-  // const [previewState, setPreviewState] = React.useState(previews);
+
+  const genres = [
+    "Personal Growth",
+    "True Crime and Investigative Journalism",
+    "History",
+    "Comedy",
+    "Entertainment",
+    "Business",
+    "Fiction",
+    "News",
+    "Kids and Family",
+  ];
+
+
+
   
   
   React.useEffect(()=>{    //set use effect hook for handling api calls
@@ -27,6 +42,8 @@ function ShowPreviews() {
         
         const data = await response.json()
         setPreviews(data)
+        
+          
 
       } catch (err) {
         setError(err)        //set error to err
@@ -37,6 +54,65 @@ function ShowPreviews() {
     }
     addPreviews()  // call function
    }, [])
+
+
+   React.useEffect(() => {
+    // Set previewState to previewData when it changes
+    setPreviewsLastState(previews);
+  }, [previews]);
+
+
+  const handleFilter = (event) => {
+    const value = event.target.innerText;
+    let sortedData;
+  
+    switch (value) {
+      case "A-Z":
+        sortedData = [...previewsLastState].sort((a, b) =>
+          a.title.localeCompare(b.title)
+        );
+        
+        break;
+      case "Z-A":
+        sortedData = [...previewsLastState].sort((a, b) =>
+          b.title.localeCompare(a.title)
+        );
+        break;
+      case "Newest":
+        sortedData = [...previewsLastState].sort(
+          (a, b) => new Date(b.updated) - new Date(a.updated)
+        );
+        break;
+      case "Oldest":
+        sortedData = [...previewsLastState].sort(
+          (a, b) => new Date(a.updated) - new Date(b.updated)
+        );
+        break;
+      default:
+        sortedData = [...previewsLastState];
+    }
+  
+    setPreviewsLastState(sortedData);
+  };
+
+   let matchSameGenreShows;
+
+   const handleGenreUpdate = (genre) => {
+     /*
+   Check if the "previewState" array holds any of the given inputs and if so, save
+   those genre to thier respective variables. */
+     if (genre && genre !== "All") {
+       matchSameGenreShows = [...previewsLastState].filter((show) =>
+         show.genres.includes(genres.indexOf(genre) + 1)
+       );
+     } else {
+       matchSameGenreShows = [...previewsLastState];
+     }
+   
+     setPreviews(matchSameGenreShows);
+   };
+ 
+
   
   if (error) {                 // if error display this message
     return <h1 className='text-red-600 font-extrabold'>{error.message}</h1>
@@ -44,12 +120,15 @@ function ShowPreviews() {
   if (loading){
     return <h1 className='text-white font-extrabold text-3xl justify-center items-center'>Loading ....</h1>
   }
-
+  
+  
 
   return (
     <> 
-       
-    
+       <h1 className='font-extrabold  text-white text-5xl mb-10 md:text-7xl items-center ml-10'>Welcome to <span className='text-[#ff564a]'>GenZ podcast</span></h1>
+       <Filters handleGenreUpdate = {handleGenreUpdate}
+       genres = {genres}
+       handleFilter={handleFilter}/>
        <ul className='list-none flex flex-wrap ml-8 text-white gap-10  justify-start'>
         {previews.map(preview => (
           <Link key={preview.id} to={`/show/${preview.id}`}>
@@ -75,7 +154,7 @@ function ShowPreviews() {
                       <p><span className='font-bold'>Seasons: </span>{preview.seasons}</p>
                       <p><span className='font-bold'>Genres: </span>{preview.genres.length}</p>
                     </div>
-                    <p className=' text-gray-500 font-normal'><span></span>{preview.updated.slice(0,10)}</p>
+                    <p className=' text-gray-500 font-normal'><span>Last Updated:</span>{preview.updated.slice(0,10)}</p>
                   </div>
                   
                 </div>
