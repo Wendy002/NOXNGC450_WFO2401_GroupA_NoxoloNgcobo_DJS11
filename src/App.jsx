@@ -23,7 +23,7 @@ const App = () => {
           <Route path='/' exact element={<ShowPreviews/>}/>
           <Route path='/Favourites'  exact element={<Favourites/>}/>
           <Route path='/show/:id'  exact element={<ShowDetails/>}/>
-f
+
         </Routes>
 
         </div>

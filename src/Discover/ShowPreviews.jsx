@@ -1,5 +1,4 @@
 import React from 'react'
-import ShowsCarousel from './ShowsCarousel.jsx';
 import { Link } from 'react-router-dom';
 import Filters from '../Layout-components/Filters.jsx';
 import Searchbar from '../Layout-components/Searchbar.jsx';
